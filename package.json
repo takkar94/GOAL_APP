@@ -10,10 +10,14 @@
   "author": "Aaditya Ghimire",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
+    "js": "^0.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mongo": "^0.1.0",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1"
