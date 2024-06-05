@@ -70,7 +70,7 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 })
 
-//rpute api/user/me
+//rpute api/user/me 
 const getMe = asyncHandler(async (req,res) => {
     res.json({
         message: 'Profile'
