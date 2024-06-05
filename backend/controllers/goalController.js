@@ -21,21 +21,30 @@ const setGoal =asyncHandler (async (req,res) => {
 
 
 const updateGoal =asyncHandler (async (req,res) => {
-    const goal = await Goal.find(req.params.id);
+    const goal = await Goal.findById(req.params.id);
 
     if(!goal){
         res.status(400)
         throw new Error('Please add the id');
     }
 
-    const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const updatedGoal = await Goal.findByIdAndUpdate(goal, req.body, {new: true})
 
     res.status(200).json(updatedGoal)
 } )
 
 
 const deleteGoal =asyncHandler (async (req,res) => {
-    res.status(200).json({message:  `Delete goals ${req.params.id}`})
+    const goal = await Goal.find(req.params.id);
+    
+    if(!goal){
+        res.status(400)
+        throw new Error('Please add the id');
+    }
+
+    const deleteGoal = await Goal.findByIdAndDelete(req.params.id)
+    
+    res.status(200).json(deleteGoal)
 } )
 
 module.exports = {getGoals, setGoal ,updateGoal, deleteGoal};
