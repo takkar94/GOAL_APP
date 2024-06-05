@@ -72,17 +72,21 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //rpute api/user/me 
 const getMe = asyncHandler(async (req,res) => {
-    res.json({
-        message: 'Profile'
-    })
+   const {_id, name, email} = await User.findById(req.user.id);
+
+   res.status(200).json({
+    id: _id,
+    name,
+    email
+   })
 })
 
 
 //generate token 
 const generateToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET, {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
-    })
-}
+    });
+};
 
 module.exports = {registerUser, loginUser, getMe};
